@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<h1>Sign Up</h1>
+		<form class="site-form" action="/accounts/signup/" method="post">
+			{% csrf_token %}
+			{{ form }}
+			<input type="submit" value="Signup">
+		</form>
+
+		<li>
+			<form class="logout-link" action="{% url 'accounts:logout' %}" method="post">
+			{% csrf_token %}
+			<button type="submit">Logout</button>
+			</form>
+		</li>
+</body>
+</html>

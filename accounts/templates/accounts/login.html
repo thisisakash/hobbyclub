@@ -1,0 +1,13 @@
+<h1>Log In</h1>
+<form class="site-form" action="{% url 'accounts:login' %}" method="post">
+	{% csrf_token %}
+	{{ form }}
+	<input type="submit" value="Login">
+</form>
+
+<li>
+	<form class="logout-link" action="{% url 'accounts:logout' %}" method="post">
+	{% csrf_token %}
+	<button type="submit">Logout</button>
+	</form>
+</li>

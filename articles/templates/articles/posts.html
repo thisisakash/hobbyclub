@@ -1,0 +1,25 @@
+{% extends 'articles/base.html' %}
+{% block content %}
+
+<div class="w3-content" style="margin-top:50px;">
+
+{% include "articles/homeimage.html" %}
+
+	<div class="w3-container w3-margin-top w3-margin-bottom w3-border" style="padding:60px;">
+		<div>
+			<p><i class="w3-xxlarge far fa-user-circle"></i> <span class="w3-text-gray"> Utkarsh Bhatt | 28 August, 2018 | 231 views</span><i class="w3-xxlarge far fa-share-square w3-right"></i></p>
+		</div>
+
+	{% autoescape off %}
+	{% if post.department == "RO" %}
+		<h1>robotics Department</h1>
+	{% endif %}
+    {{ post.content }}
+    {% endautoescape %}
+	</div>
+	
+</div>
+
+
+
+{% endblock %}

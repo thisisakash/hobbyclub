@@ -1,0 +1,32 @@
+{% extends 'articles/base.html' %}
+{% block content %}
+
+<div class="w3-content" style="margin-top:50px;">
+
+{% include "articles/homeimage.html" %}
+
+	{% for dept in depts %}
+
+	<div class="w3-row w3-margin w3-border">
+	<div class="w3-half">
+		<img src="{{ dept.thumb.url }}" width="100%">
+	</div>
+	<div class="w3-half w3-padding">
+		<h3 class="w3-text-blue">{{ dept.department }}</h3>
+		<p>
+			{{ dept.short_des }}
+		</p>
+		<hr>
+		<p class="w3-text-blue"><small>12,312 views 1,211 likes</small><i class="far fa-heart w3-right w3-text-gray"></i></p>
+	</div>
+	</div>
+
+	{% endfor %}
+	
+{% include "articles/subscription.html" %}
+
+</div>
+
+
+
+{% endblock %}

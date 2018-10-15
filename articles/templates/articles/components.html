@@ -1,0 +1,54 @@
+{% extends 'articles/base.html' %}
+{% block content %}
+
+<script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+<div class="component-list" style="margin: 200px;">
+	<form method="post">
+	{% csrf_token %}
+	<input type="text" name="component" id="suggestions" placeholder="Enter the name of the component">
+	<button type="submit" id="button">Search</button>
+	</form>
+
+	<div id="demo" style="margin: 200px 0px;"></div>
+</div>
+
+{% block javascript %}
+<script type="text/javascript">
+	$('#suggestions').keyup(function(){
+		var component = $(this).val();
+		console.log($(this).val());
+		//alert("typed");
+		$.ajax({
+			url: "/articles/ajax/validate_component/",
+			data: {
+				'component': component
+			},
+			dataType: 'json',
+			success: function(data){
+				var json = $.parseJSON(data);
+				//console.log(json.length);
+				//console.log(json[0].fields.name);
+				var len = json.length, count;
+				document.getElementById('demo').innerHTML = '';
+				for(count = 0; count < len; count++)
+				{
+					document.getElementById('demo').innerHTML += json[count].fields.name + "<br>" + 
+					json[count].fields.person_taken + "<br>" +
+					json[count].fields.branch + "<br>" +
+					json[count].fields.borrow_date + "<br><br>";
+				}
+				//document.getElementById('demo').innerHTML = "help";
+				//if(data.is_taken){
+					//alert("A user with this name already exists");
+				//}
+			}
+		});
+	});
+
+	$('#button').click(function(){
+		alert("clicked");
+	});
+</script>
+{% endblock %}
+
+{% endblock %}

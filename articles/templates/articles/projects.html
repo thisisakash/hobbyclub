@@ -1,0 +1,16 @@
+<h3>Popular:<a href="#" class="w3-text-blue w3-right">All Posts</a></h3>
+	
+	{% for post in posts %}
+	<div class="w3-row w3-margin w3-border">
+	<div class="w3-half">
+		<img src="img/img002.jpg" width="100%">
+	</div>
+	<div class="w3-half w3-padding">
+		<p><i class="w3-xlarge far fa-user-circle"></i>{{ post.author }}<i class="w3-large fas fa-ellipsis-v w3-right"></i></p>
+			<small class="w3-text-gray">{{ post.created_date }}</small>
+			<h4>{{ post.title }}</h4>
+			<p>{{ post.short_des }}</p>
+			<hr>
+			<small class="w3-text-gray">1,212 views</small><i class="far fa-thumbs-up w3-right"></i>	</div>
+	</div>
+	{% endfor %}
