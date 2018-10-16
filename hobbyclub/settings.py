@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'articles',
     'accounts',
+    'django_cron',
 ]
 
 MIDDLEWARE = [
@@ -135,3 +136,7 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = '03akash97@gmail.com'
 EMAIL_HOST_PASSWORD = 'hihello@123'
 EMAIL_USE_TLS = True
+
+CRON_CLASSES = [
+        "articles.cron.MyCronJob",
+]
