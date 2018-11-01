@@ -1,9 +1,17 @@
-{% extends 'articles/base.html' %}
+{% extends 'articles/sub/base.html' %}
 {% block content %}
 
 <div class="w3-content" style="margin-top:50px;">
 
 {% include "articles/homeimage.html" %}
+
+	<div class="w3-panel w3-padding" style="border: 4px solid red">
+		<div id="typed-strings">
+			<p><b class="w3-text-red">Latest:</b> Typed.js is an <strong>Awesome</strong> library.</p>
+			<p><b class="w3-text-red">Latest:</b> It <en>types</en> out sentences.</p>
+		</div>
+		<span id="typed"></span>
+	</div>
 
 	<div class="w3-panel w3-border">
 		<h1 class="w3-text-blue w3-center">About Us</h1>
@@ -51,7 +59,18 @@
 	{% include "articles/subscription.html" %}
 
 </div>
-
+<script type="text/javascript">
+	document.getElementById('home').style.borderBottom = "3px solid red";
+</script>
+<script>
+  var typed = new Typed('#typed', {
+    stringsElement: '#typed-strings',
+    typeSpeed: 0,
+    backSpeed: 0,
+    backDelay: 2000,
+    loop:true
+  });
+</script>
 
 
 {% endblock %}

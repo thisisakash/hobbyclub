@@ -1,0 +1,65 @@
+{% load static from staticfiles %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Articles</title>
+
+	<link href="https://fonts.googleapis.com/css?family=Abril+Fatface" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
+	
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+	<script src="/static/typed.js/lib/typed.js" type="text/javascript"></script>
+	<!--<link rel="stylesheet" href="% static 'styles.css' %">-->
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	
+
+</head>
+<body>
+
+<div class="w3-container w3-text-white w3-card-4" style="z-index: 2; width: 100%; padding-right: 0px; padding-left: 0px; position: -webkit-sticky; position: sticky; top: 0px; left: 0px; background-color:rgba(0,0,0,0.85); outline: 4px solid gray; outline-offset: 0px;">
+<div class="w3-content" style="vertical-align: middle;">
+<div class="w3-left w3-padding-large">
+	<p><a href="#" style="text-decoration: none; letter-spacing:2px; font-family: 'Righteous', cursive; font-size: 180%;"><b>Hobby Club</b></a></p>
+</div>
+<div class="w3-right w3-hover-red w3-padding-large w3-center">
+	<p><a href="#" style="text-decoration: none;"><b><i class="fas fa-sign-in-alt"></i></b><br><small>Login</small></a></p>
+</div>
+<div class="w3-right w3-hover-red w3-padding-large w3-center">
+	<p><a href="{% url 'articles:components' %}" style="text-decoration: none;"><b><i class="fas fa-wrench"></i></b><br><small id="components">Components</small></a></p>
+</div>
+<div class="w3-right w3-hover-red w3-padding-large w3-center">
+	<p><a href="{% url 'articles:departments' %}" style="text-decoration: none;"><b><i class="far fa-building"></i></b><br><small id="departments">Departments</small></a></p>
+</div>
+<div class="w3-right w3-hover-red w3-padding-large w3-center">
+	<p><a href="{% url 'articles:home' %}" style="text-decoration: none;"><b><i class="fas fa-home"></i></b><br><small id="home">Home</small></a></p>
+</div>
+
+</div>
+</div>
+
+
+	<div class="wrapper">
+		{% block content %}
+		{% endblock %}
+	</div>
+
+<div class="w3-container w3-black">
+	<div class="w3-content w3-padding-large w3-center">
+		<i class="fab fa-twitter w3-margin"></i>
+		<i class="fab fa-google-plus-g w3-margin"></i>
+		<a class="w3-hover-text-red" href="https://www.facebook.com/groups/499979536763300/?ref=br_rs"><i class="fab fa-facebook-f w3-margin"></i></a>
+		<i class="fab fa-github w3-margin"></i>
+		<span class="w3-margin">&copy; 2018 by Hobby Club, KNIT Sultanpur</span>
+	</div>
+</div>
+
+</body>
+</html>

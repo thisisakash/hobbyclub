@@ -1,0 +1,94 @@
+python --version					//checking python version
+python3 --version					//checking python3 version			
+python								//checking the version of django
+import django
+django.VERSION
+nano settings.python				//open settings and edit it directly in server
+ssh -i C:/Users/tilliu/Downloads/secondinstance.pem ubuntu@18.191.243.229		//connection with aws server
+sudo reboot
+
+You are using pip version 9.0.1, however version 18.1 is available.
+You should consider upgrading via the 'python -m pip install --upgrade pip' command.
+
+Add allowed host (the ip of the aws server) to run django
+use github to upload file on aws server
+
+How to kill a process on a port on ubuntu:
+You want to use backtick not regular tick:
+sudo kill `sudo lsof -t -i:9001`
+If that doesn't work you could also use $() for command interpolation:
+sudo kill $(sudo lsof -t -i:9001)
+type the port in place of 9001 above
+
+Not Found: /
+[11/Feb/2016 04:24:23] "GET / HTTP/1.1" 200 1767
+i think this is because the url is not assigned to any view or template
+
+AWS: EC2 instance No Data Received:
+Here are the steps I followed to solve this:
+Went to EC2 instances
+Click on instance
+Go to Security Groups column and click on the security group selected.
+In the lower panel, select Inbound > Edit > Add Rule
+Under Add Rule, select Type as HTTP and Save.
+OR (which worked for me(akash):
+type : All traffic, Protocol: all, port range: 0-65535, Source: custom, 0.0.0.0./0, ::/0 and click save
+
+how to add inbound rules in aws:
+Open the Amazon EC2 console at https://console.aws.amazon.com/ec2/.
+In the navigation pane, choose Security Groups and select the security group.
+On the Inbound tab, choose Edit.
+In the dialog, choose Add Rule and do the following: ...
+Choose Save.
+You can also specify outbound rules. ...
+Choose Save.
+
+
+You’ll have the option to immediately turn off your computer (after shutting down your session), rebooting, logging out, and more.
+if – by chance – you mistakenly turn off your computer, you won’t lose anything.
+sudo shutdown -h now
+Using this command basically gives your computer the option to either halt or poweroff, then does that immediately.  Halting simply stops all running processes, making it safe to turn off your computer, while the poweroff command does both.
+Note: if you want to halt, you can also type sudo halt into the Terminal.
+If you would like to ensure that your system halts or poweroffs by default, the following commands do just that.
+sudo shutdown -P HH:MM
+or
+sudo shutdown -H HH:MM
+if you want to shutdown your computer in 30 minutes, then sudo shutdown +30 would be the command.
+If you want to shutdown your computer at 5:30 PM (as an example), then sudo shutdown 17:30 would be the command to use.
+Finally, if you’ve used one of these examples with a time attached, and realize you want to keep using your computer, typing sudo shutdown -c in a different Terminal session will cancel the scheduled shutdown.
+If you want to restart your computer, you have two options.  The first still uses the shutdown command, but adds an option at the end that tells your system to restart once the shutdown has completed successfully.
+Of course, typing sudo shutdown -r isn’t necessarily intuitive, so thankfully we can simply type sudo reboot into the Terminal to accomplish the same thing.
+Finally, some systems have hibernate or suspend options on their standard logout screen.  The suspend option saves your current state, then “almost” shuts down so that you can quickly return to your current state.  While suspended, your computer still uses power (important if running a laptop).  Hibernate is the same as suspend, except your current state is saved to disk and the computer turned off.  You’ll need to restart your system, but can return to your current state once restarted.  To do either of these from the command line, a power manager command is used.
+Typing sudo pm-suspend will suspend your computer.
+Similarly,  sudo pm-hibernate is the command to place it in hibernate mode.
+
+If I type "python manage.py --help" only original django commands are listed
+
+	http://18.191.243.229:70/
+	This site can’t be reached
+	sudo python3 manage.py r unserver 0.0.0.0:70
+	http://18.191.243.229:70/
+	CONFIRMED (WEB PAGE WILL WORK)
+	CTRL + C in terminal
+	http://18.191.243.229:70/
+	This site can’t be reached
+so in other to fix this, we use screen:
+	sudo python3 manage.py r unserver 0.0.0.0:70
+	http://18.191.243.229:70/
+	CONFIRMED (WEB PAGE WILL WORK)
+	Now press Ctrl+A and then press d to exit from this screen.
+
+Django how to check if objects contains string in multiple fields
+Puzzle.objects.filter(title__contains=search_text)
+
+Ignores everything between {% comment %} and {% endcomment %}. An optional note may be inserted in the first tag. For example, this is useful when commenting out code for documenting why the code was disabled.
+
+{% comment "Optional note" %}
+    <p>Commented out text with {{ create_date|date:"c" }}</p>
+{% endcomment %}
+
+{% autoescape on %}
+    {{ body }}
+{% endautoescape %}
+
+

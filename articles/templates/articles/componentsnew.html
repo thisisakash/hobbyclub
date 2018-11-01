@@ -1,0 +1,41 @@
+{% extends 'articles/sub/base.html' %}
+{% block content %}
+
+<div class="w3-content" style="margin-top:50px;">
+
+		<div class="w3-container">
+		{% for comp in comps %}
+			<div class="w3-panel w3-card">
+				<h3>{{ comp.name }}</h3>
+				
+				<p>{{ comp.person_taken }} | 
+				{% if comp.branch == 'CE' %}
+				Civil Engineering |
+				{% elif comp.branch == 'CS' %}
+				Computer Science |
+				{% elif comp.branch == 'EE' %}
+				Electrical Engineering |
+				{% elif comp.branch == 'EL' %}
+				Electronics Engineering |
+				{% elif comp.branch == 'ME' %}
+				Mechanical Engineering |
+				{% elif comp.branch == 'IT' %}
+				Information Technology |
+				{% endif %}
+				{{ comp.year }}</p>
+
+				<p class="w3-left"><b>Borrow Date: </b>{{ comp.borrow_date }}</p>
+				<p class="w3-right"><b>Return Date: </b>
+						{% if comp.return_date %}
+						{{ comp.return_date }}
+						{% else %}
+						Not Returned Yet
+						{% endif %}
+				</p>
+			</div>
+		
+		{% endfor %}
+		</div>
+</div>
+
+{% endblock %}

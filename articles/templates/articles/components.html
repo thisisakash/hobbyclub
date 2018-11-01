@@ -1,15 +1,58 @@
-{% extends 'articles/base.html' %}
+{% extends 'articles/sub/base.html' %}
 {% block content %}
 
 <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
-<div class="component-list" style="margin: 200px;">
-	<form method="post">
-	{% csrf_token %}
-	<input type="text" name="component" id="suggestions" placeholder="Enter the name of the component">
-	<button type="submit" id="button">Search</button>
-	</form>
+<div class="w3-container w3-content w3-card w3-margin-top w3-margin-bottom">
+	<div class="w3-container"><p>Hobby Club has a set of components which it provides to the students of college. "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat." </p></div>
+	<div class="component-list">
 
-	<div id="demo" style="margin: 200px 0px;"></div>
+	<div class="w3-row w3-margin-top w3-margin-bottom w3-blue">
+	<div class="w3-half w3-border"><button class="w3-button w3-block w3-hover-black">All Components in Hobby Club</button></div>
+	<div class="w3-quarter w3-border"><button class="w3-button w3-block w3-hover-black">By Student Name</button></div>
+	<div class="w3-quarter w3-border"><button class="w3-button w3-block w3-hover-black w3-blue-grey">By Component Name</button></div>
+	</div>
+
+	<form class="w3-container" method="post">
+	{% csrf_token %}
+	<input class="w3-input w3-border" type="text" name="component" id="suggestions" placeholder="Enter the name of the component">
+	<br>
+	<button class="w3-button w3-hide w3-right w3-blue" type="submit" id="button">Search</button>
+	</form>
+</div>
+
+	<div class="w3-container" id="mainupdate">
+		{% for comp in comps %}
+			<div class="w3-panel">
+				<h3>{{ comp.name }}</h3>
+				
+				<p>{{ comp.person_taken }} | 
+				{% if comp.branch == 'CE' %}
+				Civil Engineering |
+				{% elif comp.branch == 'CS' %}
+				Computer Science |
+				{% elif comp.branch == 'EE' %}
+				Electrical Engineering |
+				{% elif comp.branch == 'EL' %}
+				Electronics Engineering |
+				{% elif comp.branch == 'ME' %}
+				Mechanical Engineering |
+				{% elif comp.branch == 'IT' %}
+				Information Technology |
+				{% endif %}
+				{{ comp.year }}</p>
+
+				<p class="w3-left"><b>Borrow Date: </b>{{ comp.borrow_date }}</p>
+				<p class="w3-right"><b>Return Date: </b>
+						{% if comp.return_date %}
+						{{ comp.return_date }}
+						{% else %}
+						Not Returned Yet
+						{% endif %}
+				</p>
+			</div>
+			<hr>
+		{% endfor %}
+	</div>
 </div>
 
 {% block javascript %}
@@ -19,23 +62,25 @@
 		console.log($(this).val());
 		//alert("typed");
 		$.ajax({
-			url: "/articles/ajax/validate_component/",
+			url: "/ajax/validate_component/",
 			data: {
 				'component': component
 			},
 			dataType: 'json',
 			success: function(data){
 				var json = $.parseJSON(data);
-				//console.log(json.length);
+				console.log(json.length);
 				//console.log(json[0].fields.name);
 				var len = json.length, count;
-				document.getElementById('demo').innerHTML = '';
+				document.getElementById('mainupdate').innerHTML = '';
 				for(count = 0; count < len; count++)
 				{
-					document.getElementById('demo').innerHTML += json[count].fields.name + "<br>" + 
-					json[count].fields.person_taken + "<br>" +
-					json[count].fields.branch + "<br>" +
-					json[count].fields.borrow_date + "<br><br>";
+				document.getElementById('mainupdate').innerHTML += "<div class='w3-panel'>"+
+				"<h3>"+json[count].fields.name+"</h3>"+"<p>"+json[count].fields.person_taken+" | "+
+				json[count].fields.branch+" | "+json[count].fields.year+"</p>"+
+				"<p class='w3-left'><b>Borrow Date: </b>"+json[count].fields.borrow_date+"</p>"+
+				"<p class='w3-right'><b>Return Date: </b>"+json[count].fields.return_date+
+				"</p></div><hr>";
 				}
 				//document.getElementById('demo').innerHTML = "help";
 				//if(data.is_taken){
@@ -48,6 +93,9 @@
 	$('#button').click(function(){
 		alert("clicked");
 	});
+</script>
+<script type="text/javascript">
+	document.getElementById('components').style.borderBottom = "3px solid red";
 </script>
 {% endblock %}
 

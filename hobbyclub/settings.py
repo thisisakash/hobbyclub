@@ -25,13 +25,13 @@ SECRET_KEY = 'b)e*k$q19%cbeuz9ztu@^#e3@m5beylr8@)#_w+dv1s$lh1tiq'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1']
 
 
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
+    
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -40,6 +40,9 @@ INSTALLED_APPS = [
     'articles',
     'accounts',
     'django_cron',
+    'django_seed',
+    'password_reset',
+    'django.contrib.admin',
 ]
 
 MIDDLEWARE = [
@@ -133,8 +136,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = '03akash97@gmail.com'
-EMAIL_HOST_PASSWORD = 'hihello@123'
+EMAIL_HOST_USER = '12rajurastogi121@gmail.com'
+EMAIL_HOST_PASSWORD = 'ckecking@123'
 EMAIL_USE_TLS = True
 
 CRON_CLASSES = [

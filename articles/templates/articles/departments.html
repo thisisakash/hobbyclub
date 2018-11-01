@@ -1,11 +1,18 @@
-{% extends 'articles/base.html' %}
+
+{% extends 'articles/sub/base.html' %}
 {% block content %}
+
 
 <div class="w3-content" style="margin-top:50px;">
 
 {% include "articles/homeimage.html" %}
 
 	{% for dept in depts %}
+
+{% with "articles:dept"|add:dept.department|lower as pathname %}
+<a href="{% url pathname %}" class="w3-hover-sepia">
+{% endwith %}
+
 
 	<div class="w3-row w3-margin w3-border">
 	<div class="w3-half">
@@ -20,13 +27,16 @@
 		<p class="w3-text-blue"><small>12,312 views 1,211 likes</small><i class="far fa-heart w3-right w3-text-gray"></i></p>
 	</div>
 	</div>
-
+</a>
 	{% endfor %}
 	
 {% include "articles/subscription.html" %}
 
 </div>
-
+<script type="text/javascript">
+	document.getElementById('departments').style.borderBottom = "3px solid red";
+</script>
 
 
 {% endblock %}
+

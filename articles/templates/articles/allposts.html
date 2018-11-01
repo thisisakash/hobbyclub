@@ -1,0 +1,16 @@
+<div class="w3-row w3-margin-top w3-margin-bottom">
+	  
+	  {% for post in posts %}
+	  <div class="w3-col s3">
+			<div class="w3-card">
+			<img width="100%" height="200px">
+			<div class="w3-container w3-padding">
+			<p><i class="w3-xlarge far fa-user-circle"></i> {{ post.author }}<i class="w3-large fas fa-ellipsis-v w3-right"></i></p>
+			<small class="w3-text-gray">{{ post.created_date }}</small>
+			<h4>{{ post.title }}</h4>
+			<hr>
+			<small class="w3-text-gray">1,212 views</small><i class="far fa-thumbs-up w3-right"></i>
+			</div></div>
+	  </div>
+	  {% endfor %}
+</div>

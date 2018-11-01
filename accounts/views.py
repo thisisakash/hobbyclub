@@ -13,17 +13,17 @@ from django.contrib.auth.models import User
 from django.core.mail import EmailMessage
 
 
-# def signup_view(request):
-# 	if request.method == 'POST':
-# 		form = UserCreationForm(request.POST)
-# 		if form.is_valid():
-# 			form.save()
-# 			login(request, user)
-# 			return redirect('accounts:check')
-# 			#return HttpResponse('check')
-# 	else:
-# 		form = UserCreationForm()
-# 	return render(request, 'accounts/signup.html', {'form': form})
+def signup_view(request):
+	if request.method == 'POST':
+		form = UserCreationForm(request.POST)
+		if form.is_valid():
+			form.save()
+			login(request, user)
+			return redirect('accounts:check')
+			#return HttpResponse('check')
+	else:
+		form = UserCreationForm()
+	return render(request, 'accounts/signup.html', {'form': form})
 
 def signup(request):
     if request.method == 'POST':

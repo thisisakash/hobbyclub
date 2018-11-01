@@ -75,3 +75,7 @@ class Components(models.Model):
 	year = models.IntegerField()
 	borrow_date = models.DateTimeField(default=timezone.now)
 	return_date = models.DateTimeField(blank=True, null=True)
+
+class TextFile(models.Model):
+    # if storing in filesystem
+    content = models.FileField()
